@@ -1,6 +1,12 @@
 module AdventLibrary where
 
 import Data.List as List
+import System.IO (openFile, IOMode (ReadMode), hGetContents)
+
+getFileContent :: FilePath -> IO String 
+getFileContent filePath = do
+  handle <- openFile filePath ReadMode 
+  hGetContents handle
 
 elfCaloriesList :: String -> [[String]]
 elfCaloriesList fileContent = split "" $ lines fileContent
